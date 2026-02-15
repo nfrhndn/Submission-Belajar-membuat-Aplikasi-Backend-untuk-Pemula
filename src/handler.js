@@ -1,4 +1,4 @@
-const { nanoid } = require('nanoid');
+const {nanoid} = require('nanoid');
 const books = require('./books');
 
 // Kriteria 3: Menyimpan Buku
@@ -63,7 +63,7 @@ const addBookHandler = (request, h) => {
 
 // Kriteria 4: Menampilkan Seluruh Buku (+ Opsional Query Params)
 const getAllBooksHandler = (request, h) => {
-  const { name, reading, finished } = request.query;
+  const {name, reading, finished} = request.query;
 
   let filteredBooks = books;
 
@@ -104,7 +104,7 @@ const getAllBooksHandler = (request, h) => {
 
 // Kriteria 5: Menampilkan Detail Buku
 const getBookByIdHandler = (request, h) => {
-  const { bookId } = request.params;
+  const {bookId} = request.params;
 
   const book = books.filter((n) => n.id === bookId)[0];
 
@@ -127,7 +127,7 @@ const getBookByIdHandler = (request, h) => {
 
 // Kriteria 6: Mengubah Data Buku
 const editBookByIdHandler = (request, h) => {
-  const { bookId } = request.params;
+  const {bookId} = request.params;
   const {
     name, year, author, summary, publisher, pageCount, readPage, reading,
   } = request.payload;
@@ -192,7 +192,7 @@ const editBookByIdHandler = (request, h) => {
 
 // Kriteria 7: Menghapus Buku
 const deleteBookByIdHandler = (request, h) => {
-  const { bookId } = request.params;
+  const {bookId} = request.params;
 
   const index = books.findIndex((book) => book.id === bookId);
 

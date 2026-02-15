@@ -94,7 +94,15 @@ Server berjalan pada http://localhost:9000
 
 ## 🔗 Dokumentasi API (Endpoints)
 
-Anda bisa menguji API ini menggunakan aplikasi seperti **Postman** atau **Insomnia**. Berikut adalah daftar endpoint yang tersedia:
+### Swagger UI 📄
+
+Project ini dilengkapi dengan **Swagger UI** untuk memudahkan Anda mengeksplorasi dan menguji endpoint API secara visual.
+Setelah server berjalan, buka browser dan akses:
+**[http://localhost:9000/documentation](http://localhost:9000/documentation)**
+
+### Daftar Endpoint Manual
+
+Anda juga bisa menguji API ini menggunakan aplikasi seperti **Postman** atau **Insomnia**. Berikut adalah daftar endpoint yang tersedia:
 
 | Method   | Endpoint          | Deskripsi                               |
 | :------- | :---------------- | :-------------------------------------- |
