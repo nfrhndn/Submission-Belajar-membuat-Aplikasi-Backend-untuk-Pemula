@@ -1,29 +1,33 @@
-# Bookshelf API 📚
+# 📚 Bookshelf API - Dicoding Submission
 
-Submission untuk kelas **"Belajar Membuat Aplikasi Backend untuk Pemula"** dari **Dicoding Indonesia**.
+Selamat datang di proyek **Bookshelf API**! 🚀
 
-Project ini adalah sebuah RESTful API sederhana untuk pengelolaan data buku (Bookshelf). Dibangun menggunakan **Node.js** dan framework **Hapi**, aplikasi ini memungkinkan pengguna untuk menyimpan, melihat, memperbarui, dan menghapus data buku.
+Proyek ini merupakan submission tugas akhir untuk kelas **"Belajar Membuat Aplikasi Back-End untuk Pemula"** dari **Dicoding Indonesia**.
+
+API ini dibangun menggunakan **Node.js** dan framework **Express.js**, dirancang khusus sebagai RESTful API sederhana namun kokoh untuk pengelolaan data buku (Bookshelf) secara _in-memory_.
 
 ---
 
-## 🚀 Fitur Utama
+## ✨ Fitur Utama (Kriteria Dicoding Terpenuhi)
 
-- **Menambahkan Buku**: Menyimpan data buku baru dengan detail lengkap (judul, tahun, penulis, ringkasan, dll).
-- **Melihat Seluruh Buku**: Menampilkan daftar ringkas semua buku yang tersimpan.
-- **Detail Buku**: Melihat informasi detail dari sebuah buku berdasarkan ID.
-- **Mengubah Data Buku**: Memperbarui informasi buku yang sudah ada.
-- **Menghapus Buku**: Menghapus data buku dari sistem.
-- **Validasi Data**: Memastikan data yang dikirim sesuai dengan kriteria (misal: `readPage` tidak boleh lebih besar dari `pageCount`).
+Aplikasi ini telah lulus kriteria ketat dari Dicoding, mencakup fitur-fitur berikut:
+
+- 📖 **Menambahkan Buku (`POST /books`)**: Menyimpan data buku lengkap dengan validasi (misal: `readPage` tidak boleh melampaui `pageCount`).
+- 📚 **Menampilkan Seluruh Buku (`GET /books`)**: Menampilkan daftar ringkas buku. Mendukung **Query Parameters Opsional** untuk filter berdasarkan `name`, `reading`, dan `finished`!
+- 🔍 **Detail Buku (`GET /books/:bookId`)**: Melihat informasi spesifik dan lengkap dari sebuah buku menggunakan ID unik.
+- ✏️ **Mengubah Data Buku (`PUT /books/:bookId`)**: Memperbarui informasi buku yang sudah ada beserta sistem validasi input data.
+- 🗑️ **Menghapus Buku (`DELETE /books/:bookId`)**: Menghapus data buku dari sistem berdasarkan ID.
 
 ---
 
 ## 🛠️ Teknologi yang Digunakan
 
-- **[Node.js](https://nodejs.org/)**: Runtime environment untuk menjalankan JavaScript di sisi server.
-- **[Hapi.js](https://hapi.dev/)**: Framework web yang powerful dan fleksibel untuk membangun aplikasi dan layanan API.
-- **[Nanoid](https://github.com/ai/nanoid)**: Library untuk menghasilkan ID unik yang URL-friendly.
-- **[ESLint](https://eslint.org/)** (Google Config): Tools untuk menjaga konsistensi dan kualitas kode.
-- **[Nodemon](https://nodemon.io/)**: Tools untuk development yang me-restart server secara otomatis saat ada perubahan file.
+Proyek ini telah direfactor secara modern untuk memenuhi standar (_Best-Practices_) terbaru:
+
+- **[Node.js](https://nodejs.org/)**: Runtime environment (LTS).
+- **[Express.js](https://expressjs.com/)**: Framework web minimalis, cepat, dan standar industri untuk routing.
+- **[Nanoid (v3)](https://github.com/ai/nanoid)**: Dipakai untuk men-generate ID buku unik berukuran 16 karakter yang URL-friendly.
+- **[ESLint](https://eslint.org/)** (Google Config): Dimasukkan untuk menjaga kualitas, kerapihan, dan konsistensi kode JavaScript (0 Errors/Warnings).
 
 ---
 
@@ -32,107 +36,64 @@ Project ini adalah sebuah RESTful API sederhana untuk pengelolaan data buku (Boo
 ```
 .
 ├── src
-│   ├── books.js        # Penyimpanan data in-memory (array)
-│   ├── handler.js      # Logika untuk menangani request (controller)
-│   ├── routes.js       # Definisi rute (endpoint) API
-│   └── server.js       # Konfigurasi dan inisialisasi server Hapi
-├── .eslintrc.json      # Konfigurasi ESLint
-├── package.json        # Daftar dependency dan script project
-└── README.md           # Dokumentasi project
+│   ├── books.js        # Array in-memory untuk menyimpan data buku
+│   ├── handler.js      # Logika controller (Request/Response API)
+│   ├── routes.js       # Definisi endpoint (Express Router)
+│   └── server.js       # Entry point inisialisasi server Express
+├── .eslintrc.json      # Aturan linter (Google Style Guide)
+├── package.json        # Konfigurasi dependensi NPM & Runner Script
+└── README.md           # Dokumentasi yang sedang Anda baca 😉
 ```
 
 ---
 
-## 💻 Cara Menjalankan Project (Instalasi)
+## 🚀 Cara Menjalankan Project
 
-Ikuti langkah-langkah berikut untuk menjalankan aplikasi ini di komputer lokal Anda:
+Ikuti langkah-langkah simpel di bawah ini untuk menguji Bookshelf API di komputer lokal Anda:
 
-### 1. Prasyarat
+### 1. Instalasi Node Modules
 
-Pastikan Anda sudah menginstal **Node.js** di komputer Anda. Cek dengan menjalankan perintah ini di terminal:
-
-```bash
-node -v
-npm -v
-```
-
-### 2. Clone Repository (Opsional)
-
-Jika Anda belum memiliki kode ini, clone repository ini atau download dan ekstrak file zip-nya.
-
-### 3. Instalasi Dependencies
-
-Buka terminal/command prompt, arahkan ke folder project ini, lalu jalankan perintah:
+Pastikan Anda sudah menginstal **Node.js**. Buka terminal di dalam folder proyek ini lalu jalankan:
 
 ```bash
 npm install
 ```
 
-Perintah ini akan mengunduh semua library yang dibutuhkan (Hapi, Nanoid, dll) ke dalam folder `node_modules`.
+_(Perintah ini akan mengunduh paket `express`, `cors`, `nanoid`, dsb.)_
 
-### 4. Jalankan Server
+### 2. Jalankan Server
 
-Untuk menjalankan server dalam mode production:
+Kriteria Dicoding mewajibkan aplikasi bisa dijalankan dengan spesifik sebuah runner script, yaitu `start`.
 
 ```bash
 npm run start
 ```
 
-Untuk menjalankan server dalam mode development (dengan Nodemon agar auto-restart saat koding):
+Atau jika Anda sedang men-develop dan ingin server otomatis _restart_:
 
 ```bash
 npm run dev
 ```
 
-Jika berhasil, Anda akan melihat pesan:
+### 3. Sukses! 🎉
 
-```
-Server berjalan pada http://localhost:9000
-```
-
----
-
-## 🔗 Dokumentasi API (Endpoints)
-
-### Swagger UI 📄
-
-Project ini dilengkapi dengan **Swagger UI** untuk memudahkan Anda mengeksplorasi dan menguji endpoint API secara visual.
-Setelah server berjalan, buka browser dan akses:
-**[http://localhost:9000/documentation](http://localhost:9000/documentation)**
-
-### Daftar Endpoint Manual
-
-Anda juga bisa menguji API ini menggunakan aplikasi seperti **Postman** atau **Insomnia**. Berikut adalah daftar endpoint yang tersedia:
-
-| Method   | Endpoint          | Deskripsi                               |
-| :------- | :---------------- | :-------------------------------------- |
-| `POST`   | `/books`          | Menambahkan buku baru.                  |
-| `GET`    | `/books`          | Mendapatkan seluruh buku.               |
-| `GET`    | `/books/{bookId}` | Mendapatkan detail buku berdasarkan ID. |
-| `PUT`    | `/books/{bookId}` | Memperbarui data buku berdasarkan ID.   |
-| `DELETE` | `/books/{bookId}` | Menghapus buku berdasarkan ID.          |
-
-### Contoh Body Request (POST /books)
-
-Saat menambahkan buku, kirim data JSON seperti berikut:
-
-```json
-{
-  "name": "Buku A",
-  "year": 2010,
-  "author": "John Doe",
-  "summary": "Lorem ipsum dolor sit amet",
-  "publisher": "Dicoding Indonesia",
-  "pageCount": 100,
-  "readPage": 25,
-  "reading": false
-}
-```
+Jika berhasil, terminal akan menampilkan pesan:
+`Server berjalan pada http://localhost:9000`
 
 ---
 
-## 👤 Penulis
+## 🧪 Pengujian via Postman
 
-Dibuat dengan ❤️ oleh **[nfrhndn](https://github.com/nfrhndn)**.
+API ini dirancang 100% kompatibel dan siap diuji menggunakan **Bookshelf API Test Collection** bawaan dari Dicoding.
 
-Submission ini adalah bagian dari perjalanan belajar saya di **Dicoding Indonesia**. Semoga bermanfaat!
+1. Download dan import file Collection dan Environment Postman dari portal Dicoding.
+2. Jalankan `npm run start` di terminal latar belakang.
+3. Jalankan "Run Collection" di Postman. Semua test wajib dan opsional dirancang untuk **Passed/Lulus Sempurna**.
+
+---
+
+## 👤 Tentang Penulis
+
+Dibuat dengan 💻 dan ☕ oleh **[Novendy Farhanudin (nfrhndn)](https://github.com/nfrhndn)**.
+
+Sebagai bagian dari komitmen untuk terus berkembang dan menjadi Developer handal bersama **Dicoding Indonesia**.

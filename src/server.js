@@ -1,40 +1,15 @@
-const Hapi = require('@hapi/hapi');
-const Inert = require('@hapi/inert');
-const Vision = require('@hapi/vision');
-const HapiSwagger = require('hapi-swagger');
+const express = require('express');
+const cors = require('cors');
 const routes = require('./routes');
 
-const init = async () => {
-  const server = Hapi.server({
-    port: 9000,
-    host: 'localhost',
-    routes: {
-      cors: {
-        origin: ['*'],
-      },
-    },
-  });
+const app = express();
+const port = 9000;
 
-  const swaggerOptions = {
-    info: {
-      title: 'Bookshelf API Documentation',
-      version: '1.0.0',
-    },
-  };
+app.use(cors());
+app.use(express.json());
 
-  await server.register([
-    Inert,
-    Vision,
-    {
-      plugin: HapiSwagger,
-      options: swaggerOptions,
-    },
-  ]);
+app.use('/', routes);
 
-  server.route(routes);
-
-  await server.start();
-  console.log(`Server berjalan pada ${server.info.uri}`);
-};
-
-init();
+app.listen(port, () => {
+  console.log(`Server berjalan pada http://localhost:${port}`);
+});
